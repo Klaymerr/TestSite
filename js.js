@@ -1,24 +1,23 @@
-$(document).ready(() => {
-    $("#searchForm").on("submit", (e) => {
-        let searchText = $("#searchText").val();
-        getValue(searchText);
-        e.preventDefault();
-    });
-});
-
+// $(document).ready(() => {
+//   $("#searchForm").on("submit", (e) => {
+//     let searchText = $("#searchText").val();
+//     getValue(searchText);
+//     e.preventDefault();
+//   });
+// });
+//Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¿Ð¾ Ð½Ð°Ð¶Ð°Ñ‚Ð¸ÑŽ ÐµÐ½Ñ‚ÐµÑ€Ð°
 function getValue(searchText) {
-    const params = { value: searchText };
-    const url = "http://185.255.135.57:8080/";
-    console.log(`${url}?value=${searchText}`); // Âûâîäèì URL ñ ïàðàìåòðàìè â êîíñîëü
-    axios
-        .get(url, { params })
-        .then((response) => {
-            console.log(response);
-            let output = response.data.message;
-            console.log(output);
-            $("#vivod").html(output);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+  const params = { value: searchText };
+  console.log(params);
+  axios
+    .get("http://185.255.135.57:8080/", { params })
+    .then((response) => {
+      console.log(response);
+      let output = response.data.message;
+      console.log(output);
+      $("#vivod").html(output);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
